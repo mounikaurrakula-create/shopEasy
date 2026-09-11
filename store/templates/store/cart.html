@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ShopEasy Cart</title>
+<style>
+body{font-family:Arial;background:#f5f5f5;margin:0}
+nav{background:#222;color:white;padding:18px}
+nav a{color:white;margin-left:20px;text-decoration:none}
+.container{max-width:800px;margin:40px auto}
+.item{background:white;padding:15px;margin:15px 0;border-radius:10px;display:flex;justify-content:space-between;align-items:center}
+.item img{width:80px;height:80px;object-fit:contain;margin-right:20px}
+.info{display:flex;align-items:center}
+button,.btn{background:#222;color:white;padding:8px 12px;border:0;border-radius:5px;text-decoration:none}
+.remove{background:#d9534f}
+.total{background:white;padding:20px;text-align:right;font-size:22px;font-weight:bold}
+</style>
+</head>
+<body>
+
+<nav>
+<b>ShopEasy</b>
+<a href="/">Home</a>
+<a href="/products/">Products</a>
+<a href="/cart/">Cart</a>
+</nav>
+
+<div class="container">
+<h1>Your Shopping Cart</h1>
+
+{% if cart_items %}
+{% for item in cart_items %}
+
+<div class="item">
+<div class="info">
+
+{% if item.product.image %}
+<img src="{{ item.product.image.url }}">
+{% endif %}
+
+<div>
+<h2>{{ item.product.name }}</h2>
+<p>₹{{ item.product.price }}</p>
+
+<a class="btn" href="{% url 'decrease_cart' item.product.id %}">−</a>
+{{ item.quantity }}
+<a class="btn" href="{% url 'increase_cart' item.product.id %}">+</a>
+
+<br><br>
+
+<a class="btn remove" href="{% url 'remove_from_cart' item.product.id %}">
+Remove
+</a>
+</div>
+
+</div>
+
+<b>Subtotal: ₹{{ item.subtotal }}</b>
+</div>
+
+{% endfor %}
+
+<div class="total">Total: ₹{{ total }}</div>
+
+{% else %}
+<h2>Your cart is empty.</h2>
+<a class="btn" href="/products/">Browse Products</a>
+{% endif %}
+
+</div>
+</body>
+</html>

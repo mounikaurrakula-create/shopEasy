@@ -1,0 +1,21 @@
+# Django
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django database
+db.sqlite3
+
+# Backup
+backup.json
+
+# Environment
+.env
+.venv/
+venv/
+
+# Media uploads
+media/
+
+# IDE
+.vscode/
