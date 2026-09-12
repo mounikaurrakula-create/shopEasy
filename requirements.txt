@@ -3,3 +3,5 @@ gunicorn
 Pillow
 dj-database-url
 psycopg[binary]
+cloudinary
+django-cloudinary-storage
