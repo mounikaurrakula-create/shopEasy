@@ -25,7 +25,11 @@ SECRET_KEY = 'django-insecure-zrx!0#opz1^i+n$2d_7%xi$2n3!gi0p=2rf1#q!ricmh9o)!kt
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "shopeasy-1-trg9.onrender.com",
+    "localhost",
+    "127.0.0.1",
+]
 
 
 # Application definition
